@@ -1,0 +1,39 @@
+<div id="app">
+  <h1 class="title"><i></i> Kalkulator Kcal</h1>
+  <div class="entry header">
+    <div class="long">Description</div>
+    <div class="short">Calories</div>
+    <div class="short">Fat</div>
+    <div class="short">Carbs</div>
+    <div class="short">Protein</div>
+  </div>
+  <div class="entry"  transition="fade" *ngFor="let food of foods">
+    <td type="text"  class="long" >{{food.description}}</td>
+    <td type="number" class="short" >{{food.calories}}</td>
+    <td type="number" class="short" >{{food.fat}}</td>
+    <td type="number"  class="short" >{{food.carbs}}</td>
+    <td type="number" class="short" >{{food.protein}}</td>
+    <button class="material-delete" (click)="deleteFood(food)">
+      <i>+</i>
+    </button>
+  </div>
+  <div class="totals">
+    <div class="long">Totals:</div>
+    <div class="short">{{sumCal | number}}</div>
+    <div class="short">{{sumFat | number}}</div>
+    <div class="short">{{sumCarbs | number}}</div>
+    <div class="short">{{sumProtein | number}}</div>
+  </div>
+  <div class="new ">
+    <button class="btn" (click)="getInformation(newDescription.value)" ><i class="fa fa-folder"></i></button>
+    <input type="text"  required minlength="2" class="long" placeholder="Description" #newDescription/>
+    <input type="number"  class="short" value="{{Foodss.newCalories | number}}" placeholder="Calories" #newCalories>
+    <input type="number"  class="short" value="{{Foodss.newFat | number}}" placeholder="Fat" #newFat/>
+    <input type="number"  class="short" value="{{Foodss.newCarbs | number}}" placeholder="Carbs" #newCarbs/>
+    <input type="number" class="short" value="{{Foodss.newProtein | number}}" placeholder="Protein" #newProtein>
+    <button class="material-button" (click)="addFood(newDescription.value, newCalories.value, newFat.value,newCarbs.value,newProtein.value)" >
+      +
+    </button>
+
+  </div>
+</div>
